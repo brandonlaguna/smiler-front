@@ -4,14 +4,14 @@ export const dataRequerido = [
     name: "Amalgama",
     descripcion: "",
     image: "",
-    minipicture: "",
+    minipicture: "/assets-public/odontograma/amalgama.png",
   },
   {
     id: "2",
     name: "Caries",
     descripcion: "",
     image: "",
-    minipicture: "",
+    minipicture: "/assets-public/odontograma/caries.png",
   },
   {
     id: "3",

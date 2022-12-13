@@ -13,6 +13,8 @@ import { registerChartJs } from "../utils/register-chart-js";
 import { theme } from "../theme";
 import { Provider } from "react-redux";
 import store from "../store/store";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 config.autoAddCss = false;
 registerChartJs();
@@ -43,6 +45,17 @@ const App = (props) => {
             </AuthProvider>
           </ThemeProvider>
         </LocalizationProvider>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </CacheProvider>
     </Provider>
   );

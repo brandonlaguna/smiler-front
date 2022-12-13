@@ -8,7 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Grid from "@mui/system/Unstable_Grid/Grid";
 import SendIcon from "@mui/icons-material/Send";
 import * as yup from "yup";
-import { setDatosPersonales } from "../../../../hooks/odontogramaSlice";
+import { setDatosPersonales, setVistaOdontograma } from "../../../../hooks/odontogramaSlice";
 
 const ariaLabel = { "aria-label": "description" };
 
@@ -52,6 +52,7 @@ const DatosPersonalesForm = ({ validatedForm }) => {
     setLoading(true);
     validatedForm(true);
     dispatch(setDatosPersonales(data));
+    dispatch(setVistaOdontograma("requerido"));
   };
 
   useEffect(() => {

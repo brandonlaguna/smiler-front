@@ -4,7 +4,7 @@ export const dataCaracteristica = [
     name: "Furca 1",
     descripcion: "",
     image: "",
-    minipicture: "",
+    minipicture: "/assets-public/odontograma/furca1.png",
   },
   {
     id: "2",

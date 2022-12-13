@@ -8,12 +8,17 @@ import DatosPersonalesForm from "./components/form/datosPersonalesForm";
 import RequeridoOdontograma from "./requeridoOdontograma";
 import RealizadoOdontograma from "./realizadoOdontograma";
 import CaracteristicaOdontograma from "./caracteristicaOdontograma";
+import { useSelector, useDispatch } from "react-redux";
+import { setVistaOdontograma } from "../../hooks/odontogramaSlice";
 
-const OpcionOdontograma = () => {
-  const [value, setValue] = useState("1");
+const OpcionOdontograma = ({ toothSelected, coordSelected, setRequired }) => {
+  const { vistaOdontograma } = useSelector((state) => state.odontograma);
+  const [value, setValue] = useState("info");
   const [tabSatate, setTabState] = useState(true);
+  const dispatch = useDispatch();
+
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    dispatch(setVistaOdontograma(newValue));
   };
 
   const validatedForm = (formState) => {
@@ -23,10 +28,10 @@ const OpcionOdontograma = () => {
 
   return (
     <Box>
-      <TabContext value={value}>
+      <TabContext value={vistaOdontograma}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
-            <Tab value="info" label="Info" />
+            <Tab value="info" label="Info" onClick={() => console.log("cliced")} />
             <Tab value="requerido" label="Requerido" disabled={tabSatate} />
             <Tab value="realizado" label="Realizado" disabled={tabSatate} />
             <Tab value="caracteristicas" label="Caracteristicas" disabled={tabSatate} />
@@ -36,13 +41,13 @@ const OpcionOdontograma = () => {
           <DatosPersonalesForm validatedForm={(e) => validatedForm(e)} />
         </TabPanel>
         <TabPanel value="requerido">
-          <RequeridoOdontograma />
+          <RequeridoOdontograma toothSelected={toothSelected} coordSelected={coordSelected} />
         </TabPanel>
         <TabPanel value="realizado">
-          <RealizadoOdontograma />
+          <RealizadoOdontograma toothSelected={toothSelected} coordSelected={coordSelected} />
         </TabPanel>
         <TabPanel value="caracteristicas">
-          <CaracteristicaOdontograma />
+          <CaracteristicaOdontograma toothSelected={toothSelected} coordSelected={coordSelected} />
         </TabPanel>
       </TabContext>
     </Box>

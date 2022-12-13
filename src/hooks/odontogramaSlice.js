@@ -9,15 +9,49 @@ export const OdontogramaSlice = createSlice({
       documento: "",
       telefono: "",
     },
+    requerido: [],
+    realizado: [],
+    caracteristicas: [],
+    counter: 0,
+    seleccionarDienteCompleto: false,
+    vistaOdontograma: "info",
   },
   reducers: {
     setDatosPersonales: (state, action) => {
       state.datosPersonales = action.payload;
     },
+    setRequerido: (state, action) => {
+      const stateRequerido = state.requerido;
+      stateRequerido.push(action.payload);
+      state.requerido = stateRequerido;
+    },
+    setRealizado: (state, action) => {
+      const stateRealizado = state.realizado;
+      stateRealizado.push(action.payload);
+      state.realizado = stateRealizado;
+    },
+    setCaracteristica: (state, action) => {
+      const stateCaracteristica = state.caracteristicas;
+      stateCaracteristica.push(action.payload);
+      state.caracteristicas = stateCaracteristica;
+    },
+    setSelectDienteCompleto: (state, action) => {
+      state.seleccionarDienteCompleto = action.payload;
+    },
+    setVistaOdontograma: (state, action) => {
+      state.vistaOdontograma = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setDatosPersonales } = OdontogramaSlice.actions;
+export const {
+  setDatosPersonales,
+  setRequerido,
+  setRealizado,
+  setCaracteristica,
+  setSelectDienteCompleto,
+  setVistaOdontograma,
+} = OdontogramaSlice.actions;
 
 export default OdontogramaSlice.reducer;

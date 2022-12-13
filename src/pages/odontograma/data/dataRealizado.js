@@ -4,7 +4,7 @@ export const dataRealizado = [
     name: "Amalgama",
     descripcion: "",
     image: "",
-    minipicture: "",
+    minipicture: "/assets-public/odontograma/amalgama_realizado.png",
   },
   {
     id: "2",
