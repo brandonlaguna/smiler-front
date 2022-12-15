@@ -15,6 +15,9 @@ export const OdontogramaSlice = createSlice({
     counter: 0,
     seleccionarDienteCompleto: false,
     vistaOdontograma: "info",
+    multipleRequerido: false,
+    removeRequerido: false,
+    cleanRequerido: false,
   },
   reducers: {
     setDatosPersonales: (state, action) => {
@@ -41,6 +44,15 @@ export const OdontogramaSlice = createSlice({
     setVistaOdontograma: (state, action) => {
       state.vistaOdontograma = action.payload;
     },
+    setMultipleRequerido: (state, action) => {
+      state.multipleRequerido = action.payload;
+    },
+    setRemoveRequerido: (state, action) => {
+      state.removeRequerido = action.payload;
+    },
+    setCleanRequerido: (state, action) => {
+      state.cleanRequerido = action.payload;
+    },
   },
 });
 
@@ -52,6 +64,9 @@ export const {
   setCaracteristica,
   setSelectDienteCompleto,
   setVistaOdontograma,
+  setMultipleRequerido,
+  setRemoveRequerido,
+  setCleanRequerido,
 } = OdontogramaSlice.actions;
 
 export default OdontogramaSlice.reducer;

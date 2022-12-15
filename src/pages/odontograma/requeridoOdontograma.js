@@ -3,14 +3,22 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { dataRequerido } from "./data/dataRequerido";
 import { toast } from "react-toastify";
-import { setRequerido } from "../../hooks/odontogramaSlice";
+import {
+  setRequerido,
+  setMultipleRequerido,
+  setRemoveRequerido,
+  setCleanRequerido,
+} from "../../hooks/odontogramaSlice";
 import BarMenu from "./components/BarMenu";
 
 const RequeridoOdontograma = ({ toothSelected, coordSelected }) => {
   const dispatch = useDispatch();
   const [listRequerido, setListRequerido] = useState({});
-  const [multipleRequerido, setMultipleRequerido] = useState(0);
-  const { seleccionarDienteCompleto, requerido } = useSelector((state) => state.odontograma);
+  const { seleccionarDienteCompleto } = useSelector((state) => state.odontograma);
+
+  const handleMultiple = (state) => dispatch(setMultipleRequerido(state));
+  const handleRemove = (state) => dispatch(setRemoveRequerido(state));
+  const handleClean = (state) => dispatch(setCleanRequerido(state));
 
   useEffect(() => {
     if (dataRequerido.length > 0) {
@@ -31,6 +39,7 @@ const RequeridoOdontograma = ({ toothSelected, coordSelected }) => {
       toast.warning("Se debe seleccionar un diente!");
     }
   };
+
   const RenderRequired = () => {
     if (listRequerido.length > 0) {
       return listRequerido.map((req) => (
@@ -51,7 +60,11 @@ const RequeridoOdontograma = ({ toothSelected, coordSelected }) => {
   return (
     <div>
       <Grid container style={{ justifyContent: "center", marginBottom: 6 }}>
-        <BarMenu />
+        <BarMenu
+          multipleProps={handleMultiple}
+          removeProps={handleRemove}
+          cleanProps={handleClean}
+        />
       </Grid>
       <Grid container>
         <RenderRequired />
